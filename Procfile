@@ -1,1 +1,1 @@
-web: badelog.wsgi:application --log-file -
+web: badelog.app:application --log-file -
