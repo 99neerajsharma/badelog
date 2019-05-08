@@ -1,6 +1,41 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h1>Welcome to alumni Directory</h1>
+<div class="landing-page">
+    <div class="desc">
+
+    </div>
+    <div class="login">
+
+        <div class="form">
+
+            <h1>Log In</h1>
+
+            <div id="login">
+
+                <form action="/" method="post">
+
+                    <div class="field-wrap">
+                        <label>Username<span class="req"> *</span></label>
+                        <input type="email" required autocomplete="off" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>Password<span class="req"> *</span></label>
+                        <input type="password" required autocomplete="off" />
+                    </div>
+
+                    <button class="button button-block">Log In</button>
+                    <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
 
 {% endblock %}
