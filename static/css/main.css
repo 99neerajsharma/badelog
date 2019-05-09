@@ -40,12 +40,20 @@ body {
     width: 50%;
 }
 
-.landing-page {
+.content {
     display: flex;
     align-items: center;
     justify-content: center;
     height: calc(100% - 70px);
     width: 100%;
+}
+
+.signup {
+    min-height: 200px;
+    min-width: 200px;
+    width: 60%;
+    height: 100%;
+    padding: 60px;
 }
 
 .desc {
@@ -166,16 +174,52 @@ textarea {
     background: #ff8b55;
 }
 
-.button-block {
+.login .button-block {
     display: block;
     width: 100%;
 }
 
-.forgot {
-    text-align: right;
+.forgot-register {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin-top: 20px;
 }
 
-.forgot a {
+.register {
+    align-self: flex-start;
+}
+
+.register {
+    align-self: flex-end;
+}
+
+.forgot a,
+.register a {
     color: #555;
+}
+
+.top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.top-row>div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+}
+
+.top-row>div:last-child {
+    margin: 0;
+}
+
+.signup .button-block {
+    width: 180px;
+    display: block;
+}
+
+.signup .button {
+    float: right;
 }

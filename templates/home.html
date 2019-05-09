@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="landing-page">
+<div class="content">
     <div class="desc">
 
     </div>
@@ -25,8 +25,11 @@
                         <input type="password" required autocomplete="off" />
                     </div>
 
-                    <button class="button button-block">Log In</button>
-                    <p class="forgot"><a href="#">Forgot Password?</a></p>
+                    <button class="button button-block" name="Log In">Log In</button>
+                    <div class="forgot-register">
+                        <p class="register"><a href="signup">Register Here!</a></p>
+                        <p class="forgot"><a href="#">Forgot Password?</a></p>
+                    </div>
 
                 </form>
 

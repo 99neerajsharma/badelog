@@ -27,3 +27,13 @@ $('.form').find('input, textarea').on('keyup blur focus', function (e) {
     }
 
 });
+
+
+$('#next1').on('click', function (e) {
+  
+  // e.preventDefault();
+  
+  $('#signup1').css('display', 'none');
+  $('#signup2').css('display', 'block');
+  
+});
