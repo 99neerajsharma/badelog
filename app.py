@@ -2,6 +2,7 @@ from flask import Flask,url_for,render_template,request,  redirect,url_for, flas
 from flask_login import LoginManager , login_required , UserMixin , login_user
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeSerializer, SignatureExpired
+import pyautogui
 
 app = Flask(__name__)
 
@@ -73,7 +74,9 @@ def login():
             login_user(registeredUser)
             return "successfull login"
         else:
-            return abort(401)
+            abort(401)
+            # pyautogui.alert('Please signup first!', "alert")  # always returns "OK"
+            # return render_template("home.html")
     else:
         return render_template("home.html")
 
