@@ -9,21 +9,21 @@
 			<div class="form">
 				<h1>Register</h1>
 
-				<form action="/" method="post">
+				<form id="sign_up" action="" method="POST">
 
 					<div class="top-row">
 						<div class="field-wrap">
 							<label>
 								First Name<span class="req"> *</span>
 							</label>
-							<input type="text" required autocomplete="off" />
+							<input id="first" type="text" name= "firstName" required autocomplete="off" />
 						</div>
 
 						<div class="field-wrap">
 							<label>
 								Last Name<span class="req"> *</span>
 							</label>
-							<input type="text" required autocomplete="off" />
+							<input id="last" type="text" name="lastName" required autocomplete="off" />
 						</div>
 					</div>
 		
@@ -31,7 +31,7 @@
 						<label>
 							Email Address<span class="req"> *</span>
 						</label>
-						<input type="email" required autocomplete="off" />
+						<input id="email" type="email" name="email" required autocomplete="off" />
 					</div>
 
 					<div class="top-row">
@@ -39,14 +39,14 @@
 							<label>
 								Password<span class="req"> *</span>
 							</label>
-							<input type="password" required autocomplete="off" />
+							<input id="password" type="password" name="password" required autocomplete="off" />
 						</div>
 
 						<div class="field-wrap">
 							<label>
 								Confirm Password<span class="req"> *</span>
 							</label>
-							<input type="password" required autocomplete="off" />
+							<input id="password2" type="password" name="password2" required autocomplete="off" />
 						</div>
 					</div>
 
@@ -62,4 +62,33 @@
 	</div>
 </div>
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#next1").click(function(e){
+    var email_id = $("#email").val();
+    var domain = ".iitmandi.ac.in";
+    var flag = 1;
+    if(email_id.indexOf(domain) == -1){
+      alert("Not IIT Mandi webmail");
+      flag = 0;
+    }
+    var password1 = $("#password").val();
+    var password2 = $("#password2").val();
+    if(password1 == ""){
+      alert("Password cannot be empty.");
+      flag = 0;
+    }
+    if(password1 != password2){
+      alert("Password does not matches.");
+      flag = 0;
+    }
+    if(!flag){
+      window.location.reload();
+      e.preventDefault();
+    }
+		console.log(flag);
+  });
+});
+</script>
 {% endblock %}
