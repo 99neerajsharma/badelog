@@ -3,8 +3,20 @@ from flask_login import LoginManager , login_required , UserMixin , login_user
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeSerializer, SignatureExpired
 import pyautogui
+from flask_mysqldb import MySQL
+import yaml
 
 app = Flask(__name__)
+
+# Configure db
+db = yaml.load(open('database.yaml'))
+app.config['MYSQL_HOST'] = db['mysql_host']
+app.config['MYSQL_USER'] = db['mysql_user']
+app.config['MYSQL_PASSWORD'] = db['mysql_password']
+app.config['MYSQL_DB'] = db['mysql_db']
+
+# object of MySql
+mysql = MySQL(app)
 
 app.config['SECRET_KEY'] = 'secret_key'
 login_manager = LoginManager()
@@ -85,13 +97,21 @@ string = "b17100@students.iitmandi.ac.in"   #default webmail
 def signup():
     if request.method == 'POST':
         # Fetch form data
+        global first_db
+        global last_db
+        global email_db
+        global password_db
         userDetails = request.form
         firstName = userDetails['firstName']
+        first_db = firstName
         lastName = userDetails['lastName']
+        last_db = lastName
         email = userDetails['email']
+        email_db = email
         global string
         string = email
-        password = userDetails['password']
+        password = userDetails['password'] 
+        password_db = password
         new_user = User(firstName , lastName , email , password , users_repository.next_index())
         users_repository.save_user(new_user)
         return redirect(url_for('verification_page'))
@@ -119,6 +139,10 @@ def verification_page():
 def confirm_email(token_recv):
     try:
         email = random_URL.loads(token_recv, salt='email-confirm')
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO Login(Email, FirstName,LastName,password) VALUES(%s,%s, %s,%s)",(email_db,first_db,last_db,password_db))
+        mysql.connection.commit()
+        cur.close()
     except SignatureExpired:
         return '<h2>The token is expired!</h2>'
     registeredUser = users_repository.get_email(email)

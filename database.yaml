@@ -1,0 +1,8 @@
+# localhost
+mysql_host: '127.0.0.1'
+# access rights
+mysql_user: 'root'
+# Enter your password in field below
+mysql_password: ''
+# Name of database
+mysql_db: 'IDS_PROJECT'

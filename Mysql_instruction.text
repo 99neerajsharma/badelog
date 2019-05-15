@@ -1,0 +1,12 @@
+Create database IDS_PROJECT
+create table Login -
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Email     | varchar(50) | NO   | PRI | NULL    |       |
+| FirstName | varchar(25) | YES  |     | NULL    |       |
+| LastName  | varchar(25) | YES  |     | NULL    |       |
+| password  | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+
+Change password in database.yaml
