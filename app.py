@@ -69,7 +69,7 @@ users_repository = UsersRepository()
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = ''           #use your gmail ID
+app.config['MAIL_USERNAME'] = 'neera99j@gmail.com'           #use your gmail ID
 app.config['MAIL_PASSWORD'] = ''	#Use Password of gmail ID
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True

@@ -1,0 +1,9 @@
+
+create table Employer(CompanyName VARCHAR(20),Location VARCHAR(20),PRIMARY KEY(CompanyName,Location));
+create table Clubs_organisations(Name VARCHAR(20),Position VARCHAR(10),PRIMARY KEY(Name,Position));
+create table Contact_Details(EnrollmentNumber VARCHAR(20),Address VARCHAR(50),Facebook_profile VARCHAR(50),Github_profile VARCHAR(50),LinkedIn_profile VARCHAR(50),Contact_Number VARCHAR(11) ,PRIMARY KEY(EnrollmentNumber) );
+create table Higher_Studies(EnrollmentNumber VARCHAR(20),Major VARCHAR(25),Degree VARCHAR(20) ,Institute VARCHAR(20),Passing_Year int(5),PRIMARY KEY(EnrollmentNumber,Passing_Year));
+create table Alumni(EnrollmentNumber VARCHAR(20),Name VARCHAR(25),PassoutYear int(5) ,Degree VARCHAR(20),Branch VARCHAR(10),CurrentState VARCHAR(25) ,PRIMARY KEY(EnrollmentNumber));
+create table Opportunities_for_hiring(EnrollmentNumber VARCHAR(20),Field VARCHAR(10),Company VARCHAR(20),Position VARCHAR(10),PRIMARY KEY(Field,Company,Position));
+create table Semester_Exchange(EnrollmentNumber VARCHAR(20),Country VARCHAR(10),Year INT,College_name VARCHAR(20),PRIMARY KEY(Year,College_name));
+create table Projects(Course_relation VARCHAR(25),ProjectID VARCHAR(10),Faculty_mentor VARCHAR(10),Field_of_project VARCHAR(10),EnrollmentNumber VARCHAR(20), PRIMARY KEY(ProjectID));
