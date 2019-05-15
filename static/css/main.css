@@ -46,6 +46,7 @@ body {
     justify-content: center;
     height: calc(100% - 70px);
     width: 100%;
+    
 }
 
 .signup {
@@ -223,3 +224,9 @@ textarea {
 .signup .button {
     float: right;
 }
+
+.have_account{
+    margin-left:74%;
+    margin-top:7%;
+}
+
