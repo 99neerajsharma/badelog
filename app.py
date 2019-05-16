@@ -75,22 +75,39 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
 
+
+flag = 0
+
+def globally_change():
+    global  flag 
+    flag = 1
 @app.route("/", methods=['GET' , 'POST'])
 def login():
+    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         registeredUser = users_repository.get_email(email)
         if registeredUser != None and registeredUser.password == password and registeredUser.active == True:
+            globally_change()
+            # print("value of flasg is :;",flag)
             print('Logged in..')
             login_user(registeredUser)
-            return "successfull login"
+            return redirect(url_for('login_page'))
         else:
             return abort(401)
              # pyautogui.alert('Please signup first!', "alert")  # always returns "OK"
             # return render_template("home.html")
     else:
         return render_template("home.html")
+
+@app.route("/login_page")
+def login_page():
+    print("flag is ",flag)
+    if flag == 1:
+        return render_template("login.html")
+    else:
+        return "Please Login first"
 
 string = "b17100@students.iitmandi.ac.in"   #default webmail 
 @app.route("/signup",methods=['GET', 'POST'])
@@ -99,7 +116,7 @@ def signup():
         # Fetch form data
         global first_db
         global last_db
-        global email_db
+        global email_
         global password_db
         userDetails = request.form
         firstName = userDetails['firstName']
@@ -107,7 +124,8 @@ def signup():
         lastName = userDetails['lastName']
         last_db = lastName
         email = userDetails['email']
-        email_db = email
+        email_ = email
+        print(email_)
         global string
         string = email
         password = userDetails['password'] 
@@ -140,7 +158,9 @@ def confirm_email(token_recv):
     try:
         email = random_URL.loads(token_recv, salt='email-confirm')
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Login(Email, FirstName,LastName,password) VALUES(%s,%s, %s,%s)",(email_db,first_db,last_db,password_db))
+        print("email is ",email_)
+        cur.execute("INSERT INTO Login(Email, FirstName,LastName,password) VALUES(%s,%s, %s,%s)",(email_,first_db,last_db,password_db))
+        cur.execute("Delete from Login")
         mysql.connection.commit()
         cur.close()
     except SignatureExpired:

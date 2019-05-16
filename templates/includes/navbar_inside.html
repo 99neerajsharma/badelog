@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BadeLog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img class="logo_inside" src="{{url_for('static', filename='img/badelogW.png')}}" alt="">
+      </a>
+    </div>
+    <div class="navigationbar">
+    <ul  class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Initiatives</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+    <ul style="font-size: 18px;margin-top:1%;margin-right: 05px;" class="nav navbar-nav navbar-right">
+      <button type="button" class="btn btn-default btn-sm">
+        <a style="color:black" href="/" class="glyphicon glyphicon-log-out">Logout</a> 
+      </button>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+
+
+</body>
+</html>

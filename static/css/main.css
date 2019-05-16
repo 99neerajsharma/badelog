@@ -35,9 +35,32 @@ body {
     transition: all 0.2s;
 }
 
+.navigationbar{
+    margin-left: 600px;
+    margin-top:1%;
+}
+
+.logout{
+    font-size: 18px;
+    margin-top:1%;
+    margin-right: 05px;
+}
+
+.h3{
+    color:black;
+}
+
+
+
 .logo {
     display: block;
     width: 50%;
+}
+
+.logo_inside {
+    display: block;
+    width: 60%;
+    margin-left: 100%;
 }
 
 .content {
