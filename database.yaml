@@ -6,3 +6,4 @@ mysql_user: 'root'
 mysql_password: ''
 # Name of database
 mysql_db: 'IDS_PROJECT'
+
