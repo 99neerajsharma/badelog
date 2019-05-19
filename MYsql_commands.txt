@@ -3,7 +3,7 @@ create table Employer(CompanyName VARCHAR(20),Location VARCHAR(20),PRIMARY KEY(C
 
 create table Clubs_organisations(Name VARCHAR(20),Position VARCHAR(25),PRIMARY KEY(Name,Position));
 
-create table Contact_Details(EnrollmentNumber VARCHAR(20),Address VARCHAR(50),Facebook_profile VARCHAR(50),Github_profile VARCHAR(50),LinkedIn_profile VARCHAR(50),Contact_Number VARCHAR(11) ,PRIMARY KEY(EnrollmentNumber) );
+create table Contact_Details(EnrollmentNumber VARCHAR(20),Address VARCHAR(50),Facebook_profile VARCHAR(50),Github_profile VARCHAR(50),LinkedIn_profile VARCHAR(50),Contact_Number VARCHAR(11) ,Email VARCHAR(50), website_link VARCHAR(100),  PRIMARY KEY(EnrollmentNumber) );
 
 create table Higher_Studies(EnrollmentNumber VARCHAR(20),Major VARCHAR(25),Degree VARCHAR(20) ,Institute VARCHAR(20),Passing_Year int(5),PRIMARY KEY(EnrollmentNumber,Passing_Year),Foreign Key( EnrollmentNumber)
 References Alumni(EnrollmentNumber));
