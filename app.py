@@ -2,18 +2,14 @@ from flask import Flask,url_for,render_template,request,  redirect,url_for, flas
 from flask_login import LoginManager , login_required , UserMixin , login_user
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeSerializer, SignatureExpired
-import pyautogui
 from flask_mysqldb import MySQL
-import yaml
 
 app = Flask(__name__)
 
-# Configure db
-db = yaml.load(open('database.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'IDS_PROJECT'
 
 # object of MySql
 mysql = MySQL(app)
@@ -70,7 +66,7 @@ users_repository = UsersRepository()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'neera99j@gmail.com'           #use your gmail ID
-app.config['MAIL_PASSWORD'] = '145518110gmail'	#Use Password of gmail ID
+app.config['MAIL_PASSWORD'] = ''	#Use Password of gmail ID
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
