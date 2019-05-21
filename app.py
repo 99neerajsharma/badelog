@@ -66,7 +66,7 @@ users_repository = UsersRepository()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'neera99j@gmail.com'           #use your gmail ID
-app.config['MAIL_PASSWORD'] = ''	#Use Password of gmail ID
+app.config['MAIL_PASSWORD'] = 'Neeraj@mysql'	#Use Password of gmail ID
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
@@ -120,6 +120,7 @@ def signup():
         lastName = userDetails['lastName']
         last_db = lastName
         email = userDetails['email']
+        # username = email_
         email_ = email
         print(email_)
         global string
@@ -159,28 +160,28 @@ def confirm_email(token_recv):
         cur.execute("Delete from Login")
         mysql.connection.commit()
         cur.close()
-    except SignatureExpired:
+    except SignatureExpired :
         return '<h2>The token is expired!</h2>'
     registeredUser = users_repository.get_email(email)
     #set registered user to be active means user's account is verified.
     registeredUser.active = True
     return '<h2>The token works!</h2>'
 
-@app.route("/alumniLogin")
+@app.route("/login_page/alumni")
 def alumniLogin():
-    return render_template("alumniLogin.html")
+    return render_template("alumni.html")
 
-@app.route("/adminLogin")
+@app.route("/login_page/students")
 def adminLogin():
-    return render_template("adminLogin.html")
+    return render_template("students.html")
 
-@app.route("/studentLogin")
+@app.route("/login_page/faculty")
 def studentLogin():
-    return render_template("studentLogin.html")
+    return render_template("faculty.html")
 
-@app.route("/contact")
-def contacts():
-    return render_template("contact.html")
+@app.context_processor
+def context_processor():
+    return dict(username=string)
     
 if __name__ == "__main__":
     app.run(debug=True)
