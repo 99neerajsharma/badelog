@@ -21,12 +21,13 @@
 
 	<!-- Magnific Popup -->
 	<link type="text/css" rel="stylesheet" href="./../static/css/successfull_loginPage_css/magnific-popup.css" />
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.1/css/bootstrap.min.css">
 	<!-- Font Awesome Icon -->
 	<link rel="stylesheet" href="./../static/css/successfull_loginPage_css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="./../static/css/successfull_loginPage_css/style.css" />
+	<link type="text/css" rel="stylesheet" href="./../static/css/successfull_loginPage_css/alumni.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +41,7 @@
 	<!-- Header -->
 	<header id="home">
 		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./../static/img/background1.jpg');">
+		<div class="bg-img" style="background-image: url('./../static/img/students.jpeg');">
 			<div class="overlay"></div>
 		</div>
 		<!-- /Background Image -->
@@ -49,14 +50,12 @@
 		<nav id="nav" class="navbar nav-transparent">
 			<div class="container">
 				<div class="navbar-header">
-						
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a href="index.html">
 							<img style="color:white" class="logo-alt" src="./../static/img/badelogW.png" alt="logo">
-							
 						</a>
-					</div>			
+					</div>
 					<!-- /Logo -->
 
 					<!-- Collapse nav button -->
@@ -65,23 +64,22 @@
 					</div>
 					<!-- /Collapse nav button -->
 				</div>
+
 				<!--  Main navigation  -->
 				<ul class="main-nav nav navbar-nav navbar-right">
 					<li><a href="#home">Home</a></li>
 					<li><a href="#about">Directories</a></li>
 					<li><a href="#portfolio">Portfolio</a></li>
-					<li ><a href="#footer">Alumni words</a></li>
+					<li ><a href="#footer">Alumni words</a>
+					</li>
 					<li><a href="#footer">Contact</a></li>
-					<li ><a href="/"><strong>Logout</strong></a></li>
 				</ul>
 				<!-- /Main navigation -->
 
 			</div>
 		</nav>
 		<!-- /Nav -->
-
-		<h5 style="text-align: right;margin-right:1%;color:white ">Hi' welcome {{username[:6]}}</h5>
-		
+		<h5 style="text-align:right;margin-right:1%; color:white "> You are {{username[:6]}}</h5>
 		<!-- home wrapper -->
 		<div class="home-wrapper">
 			<div class="container">
@@ -90,7 +88,7 @@
 					<!-- home content -->
 					<div class="col-md-10 col-md-offset-1">
 						<div class="home-content">
-							<h1 class="white-text">Students-Alumni-Faculty</h1>
+							<h1 class="white-text">Welcome to Students directory</h1>
 							<p class="white-text">A place where great minds come together to create something epic. Bade-Log is a state of the art alumni-student-faculty directory and meeting platform.
 							</p>
 							<!-- <button class="white-btn">Get Started!</button>
@@ -107,64 +105,25 @@
 	</header>
 	<!-- /Header -->
 
-	<!-- About -->
-	<div id="about" class="section md-padding">
+<!-- About -->
+<div id="about" class="section md-padding">
 
-		<!-- Container -->
-		<div class="container">
+	<!-- Container -->
+	<div class="container">
 
-			<!-- Row -->
-			<div class="row">
+		<!-- Row -->
+		<div class="row">
 
-				<!-- Section header -->
-				<div class="section-header text-center">
-					<h2 class="title">Welcome to Directories</h2>
-				</div>
-				<!-- /Section header -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<img style="height:50px;width:50px;" src="./../static/img/alumniLOGO.jpeg"></img>
-						<h3>Alumni Directory</h3>
-						<p>Meet the alumni directory of IIT Mandi</p>
-						<a href="/login_page/alumni">Read more</a>
-					</div>
-				</div>
-				<!-- /about -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<img style="height:50px;width:50px;" src="./../static/img/studentLOGO.png"></img>
-						<h3>Student Directory</h3>
-						<p>Current student directory of IIT Mandi	</p>
-						<a href="/login_page/students">Read more</a>
-					</div>
-				</div>
-				<!-- /about -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<img style="height:50px;width:70px;" src="./../static/img/facultyLOGO.jpg"></img>
-						<h3>Faculty Directory</h3>
-						<p>Faculty directory of IIT Mandi</p>
-						<a href="/login_page/faculty">Read more</a>
-					</div>
-				</div>
-				<!-- /about -->
-
+			<!-- Section header -->
+			<div class="section-header text-center">
+				<h2 class="title">Find your student</h2>
 			</div>
-			<!-- /Row -->
-
+			
 		</div>
-		<!-- /Container -->
-
 	</div>
-	<!-- /About -->
 
-
+	
+</div>		
 	<!-- Numbers -->
 	<div id="numbers" class="section sm-padding">
 
@@ -229,150 +188,6 @@
 	</div>
 	<!-- /Numbers -->
 
-
-	<!-- Portfolio -->
-	<div id="portfolio" class="section md-padding bg-grey">
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-
-				<!-- Section header -->
-				<div class="section-header text-center">
-					<h2 class="title">Some Alumni</h2>
-				</div>
-				<!-- /Section header -->
-
-				<!-- Work -->
-				<div class="col-md-4 col-xs-6 work">
-					<img class="img-responsive" src="./../static/img/mohitJain.jpg" alt="">
-					<div class="overlay"></div>
-					<div class="work-content">
-						<h3>Mohit Jain</h3>
-						<span>B.tech Alumni 2016</span>
-						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./../static//img//mohitJain.png"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-				</div>
-				<!-- /Work -->
-
-				<!-- Work -->
-				<div class="col-md-4 col-xs-6 work">
-					<img class="img-responsive" src="./../static/img/VivekSharma.jpeg" alt="">
-					<div class="overlay"></div>
-					<div class="work-content">
-						<h3>Vivek Sharma</h3>
-						<span>B.tech Alumni 2017</span>
-						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./../static/img/VivekSharma.jpeg"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-				</div>
-				<!-- /Work -->
-
-				<!-- Work -->
-				<div class="col-md-4 col-xs-6 work">
-					<img class="img-responsive" src="./../static/img/chandanpurbia.jpg" alt="">
-					<div class="overlay"></div>
-					<div class="work-content">
-						<h3>chandan purbia</h3>
-						<span>B.TECH Alumni 2017</span>
-						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./../static/img/chandanpurbia.jpg"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-				</div>
-				<!-- /Work -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /Portfolio -->
-	
-
-	<!-- Testimonial -->
-	<h2 style="text-align:center">Alumni words</h2>
-	<div id="testimonial" class="section md-padding">
-
-		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./../static/img/IIT.jpg');">
-			<div class="overlay"></div>
-		</div>
-		<!-- /Background Image -->
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-
-				<!-- Testimonial slider -->
-				<div class="col-md-10 col-md-offset-1">
-					<div id="testimonial-slider" class="owl-carousel owl-theme">
-
-						<!-- testimonial -->
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img src="./../static/img/sahilArora.jpg" alt="Sahil Arora">
-								<h3 class="white-text">Sahil Arora</h3>
-								<span>B.tech Alumni 2018</span>
-							</div>
-							<p class="white-text">I was looking for an opening in my field of interest. This website gave me very accurate results and enabled me to connect with alumni who are on high positions in the field.</p>
-						</div>
-						<!-- /testimonial -->
-
-						<!-- testimonial -->
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img src="./../static/img/PriyanshSaxena.jpg" alt="Priyansh Saxena">
-								<h3 class="white-text">Priyansh Saxena</h3>
-								<span>B.tech Alumni 2018</span>
-							</div>
-							<p class="white-text">This is a great place to collaborate with other IIT Mandi mates. It helps in keeping in touch in a professional way.</p>
-						</div>
-						<!-- /testimonial -->
-
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img src="./../static/img/nehaMuthiyan.jpg" alt="Priyansh Saxena">
-								<h3 class="white-text">Neha Muthiyan</h3>
-								<span>B.tech Alumni 2018</span>
-							</div>
-							<p class="white-text">Alma-Matter is what matters the most! I wish we had this website when I was in college. It would have been very easy to find potential projects, internships and even jobs!</p>
-						</div>
-
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img src="./../static/img/shikharGupta.jpeg" alt="Priyansh Saxena">
-								<h3 class="white-text">Shikhar Gupta</h3>
-								<span>B.tech Alumni 2018</span>
-							</div>
-							<p class="white-text">On other sites, it's very hard to connect. Here it just feels like home. :)</p>
-						</div>
-
-					</div>
-				</div>
-				<!-- /Testimonial slider -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /Testimonial -->
-
 	
 
 	<!-- Footer -->
@@ -394,7 +209,7 @@
 
 					<!-- footer follow -->
 					<ul class="footer-follow">
-						<h3 style="color:white">Indian Institute of technology, Mandi</h3>
+						<h3 style="color:white">Indian Institute of Technology,<br> Students Team, Mandi</h3>
 		
 					</ul>
 					<!-- /footer follow -->

@@ -12,7 +12,7 @@ create table Alumni(EnrollmentNumber VARCHAR(20),Name VARCHAR(25),PassoutYear in
 
 create table Opportunities_for_hiring(EnrollmentNumber VARCHAR(20),Field VARCHAR(10),Company VARCHAR(20),Position VARCHAR(25),PRIMARY KEY(Field,Company,Position),Foreign Key( EnrollmentNumber) References Alumni(EnrollmentNumber));
 
-create table Semester_Exchange(EnrollmentNumber VARCHAR(20),Country VARCHAR(10),Year INT,College_name VARCHAR(20),PRIMARY KEY(Year,College_name),Foreign Key( EnrollmentNumber )References Alumni(EnrollmentNumber));
+create table Semester_Exchange(EnrollmentNumber VARCHAR(20),Country VARCHAR(10),Year INT,College_name VARCHAR(20),PRIMARY KEY(EnrollmentNumber),Foreign Key( EnrollmentNumber )References Alumni(EnrollmentNumber));
 
 create table Projects(Course_relation VARCHAR(25),ProjectID VARCHAR(10),Faculty_mentor VARCHAR(10),Field_of_project VARCHAR(10),EnrollmentNumber VARCHAR(20), PRIMARY KEY(ProjectID),Foreign Key( EnrollmentNumber) References Alumni(EnrollmentNumber));
 
