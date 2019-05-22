@@ -66,7 +66,7 @@ users_repository = UsersRepository()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'neera99j@gmail.com'           #use your gmail ID
-app.config['MAIL_PASSWORD'] = ''	#Use Password of gmail ID
+app.config['MAIL_PASSWORD'] = 'Neeraj@mysql'	#Use Password of gmail ID
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
@@ -165,7 +165,7 @@ def confirm_email(token_recv):
     #set registered user to be active means user's account is verified.
     registeredUser.active = True
     return '<h2>The token works!</h2>'
-
+alumni_no = 'b15100'
 @app.route('/profile/<enroll_no>')
 def profile_page(enroll_no):
     global alumni_no
