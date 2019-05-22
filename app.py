@@ -6,10 +6,17 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql12292091'
-app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
-app.config['MYSQL_DB'] = 'sql12292091'
+# Uncomment this if database is on your system
+# app.config['MYSQL_HOST'] = '127.0.0.1'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'ALUMNI'
+
+# Uncomment this database is on server
+# app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+# app.config['MYSQL_USER'] = 'sql12292091'
+# app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
+# app.config['MYSQL_DB'] = 'sql12292091'
 
 # object of MySql
 mysql = MySQL(app)
@@ -72,14 +79,14 @@ app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
 
 
-flag = 0
 
+flag = 0
 def globally_change():
     global  flag 
     flag = 1
+    
 @app.route("/", methods=['GET' , 'POST'])
 def login():
-    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -155,8 +162,8 @@ def confirm_email(token_recv):
         email = random_URL.loads(token_recv, salt='email-confirm')
         cur = mysql.connection.cursor()
         print("email is ",email_)
-        cur.execute("INSERT INTO Login(Email, FirstName,LastName,password) VALUES(%s,%s, %s,%s)",(email_,first_db,last_db,password_db))
         cur.execute("Delete from Login")
+        cur.execute("INSERT INTO Login(Email, FirstName,LastName,password) VALUES(%s,%s, %s,%s)",(email_,first_db,last_db,password_db))
         mysql.connection.commit()
         cur.close()
     except SignatureExpired :
@@ -164,7 +171,7 @@ def confirm_email(token_recv):
     registeredUser = users_repository.get_email(email)
     #set registered user to be active means user's account is verified.
     registeredUser.active = True
-    return '<h2>The token works!</h2>'
+    return '<h2>Your Email is verified!</h2>'
 alumni_no = 'b15100'
 @app.route('/profile/<enroll_no>')
 def profile_page(enroll_no):
@@ -174,15 +181,25 @@ def profile_page(enroll_no):
 
 @app.route("/login_page/alumni")
 def alumniLogin():
-    return render_template("alumni.html")
+    if flag == 1:
+        return render_template("alumni.html")
+    else:
+        return "Please Login first"
+    
 
 @app.route("/login_page/students")
 def adminLogin():
-    return render_template("students.html")
+    if flag == 1:
+        return render_template("students.html")
+    else:
+        return "Please Login first"
 
 @app.route("/login_page/faculty")
 def studentLogin():
-    return render_template("faculty.html")
+    if flag == 1:
+        return render_template("faculty.html")
+    else:
+        return "Please Login first"
 
 @app.context_processor
 def context_processor():
