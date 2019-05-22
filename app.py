@@ -6,10 +6,10 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'IDS_PROJECT'
+app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql12292091'
+app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
+app.config['MYSQL_DB'] = 'sql12292091'
 
 # object of MySql
 mysql = MySQL(app)
@@ -66,7 +66,7 @@ users_repository = UsersRepository()
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'neera99j@gmail.com'           #use your gmail ID
-app.config['MAIL_PASSWORD'] = 'Neeraj@mysql'	#Use Password of gmail ID
+app.config['MAIL_PASSWORD'] = ''	#Use Password of gmail ID
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
@@ -120,7 +120,6 @@ def signup():
         lastName = userDetails['lastName']
         last_db = lastName
         email = userDetails['email']
-        # username = email_
         email_ = email
         print(email_)
         global string
@@ -167,6 +166,12 @@ def confirm_email(token_recv):
     registeredUser.active = True
     return '<h2>The token works!</h2>'
 
+@app.route('/profile/<enroll_no>')
+def profile_page(enroll_no):
+    global alumni_no
+    alumni_no = enroll_no
+    return render_template('profile.html')
+
 @app.route("/login_page/alumni")
 def alumniLogin():
     return render_template("alumni.html")
@@ -181,7 +186,21 @@ def studentLogin():
 
 @app.context_processor
 def context_processor():
-    return dict(username=string)
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM Alumni Where EnrollmentNumber=%s",[alumni_no])
+    alumni_basic_information = cur.fetchall()
+    cur.execute("SELECT * FROM Contact_Details Where EnrollmentNumber=%s",[alumni_no])
+    contact_deatils = cur.fetchall()
+    cur.execute("SELECT * FROM Worked_In Where EnrollmentNumber=%s",[alumni_no])
+    Worked_In = cur.fetchall()
+    cur.execute("SELECT * FROM Higher_Studies Where EnrollmentNumber=%s",[alumni_no])
+    Higher_Studies = cur.fetchall()
+    cur.execute("SELECT * FROM Semester_Exchange Where EnrollmentNumber=%s",[alumni_no])
+    sem_exchange = cur.fetchall()
+    cur.execute("SELECT * FROM Contributed_To Where EnrollmentNumber=%s",[alumni_no])
+    contribution = cur.fetchall()
+    cur.close()
+    return dict(username=string, alumni=alumni_basic_information, contact=contact_deatils, work=Worked_In, study=Higher_Studies, sem_exchange=sem_exchange, contribution=contribution)
     
 if __name__ == "__main__":
     app.run(debug=True)
