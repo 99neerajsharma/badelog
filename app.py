@@ -172,7 +172,9 @@ def confirm_email(token_recv):
     #set registered user to be active means user's account is verified.
     registeredUser.active = True
     return '<h2>Your Email is verified!</h2>'
+
 alumni_no = 'b15100'
+list = ""
 @app.route('/profile/<enroll_no>')
 def profile_page(enroll_no):
     global alumni_no
@@ -188,15 +190,23 @@ def alumniLogin():
         # global email_
         # global password_db
         alumni_filter = request.form
-        print(alumni_filter['passout_year'])
         print(alumni_filter)
         print("alumni filter")
+        print(alumni_filter['degree'])
+        cur = mysql.connection.cursor()
+        list = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='Job' AND A.Branch='CSE' ").format(alumni_filter['passout_year'], alumni_filter['degree']))
+        print(list)
+        # list = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree={} AND A.CurrentState=Job AND A.Branch=CSE ").format(alumni_filter['passout_year'], alumni_filter['degree'],alumni_filter['current_state'],alumni_filter['branch']))
+
+        mysql.connection.commit()
+        cur.close()
         # firstName = userDetails['firstName']
         # first_db = firstName
         # lastName = userDetails['lastName']
         # last_db = lastName
         # email = userDetails['email']
         # email_ = email
+        print("alumni filter")
         # print(email_)
         # global string
         # string = email
@@ -220,7 +230,7 @@ def adminLogin():
 
 @app.route("/login_page/faculty")
 def studentLogin():
-    if flag == 1:
+    if flag == 1 :
         return render_template("faculty.html")
     else:
         return "Please Login first"
