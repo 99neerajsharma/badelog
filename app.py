@@ -80,7 +80,7 @@ mail=Mail(app)
 
 
 
-flag = 0
+flag = 1
 def globally_change():
     global  flag 
     flag = 1
@@ -179,8 +179,32 @@ def profile_page(enroll_no):
     alumni_no = enroll_no
     return render_template('profile.html')
 
-@app.route("/login_page/alumni")
+@app.route("/login_page/alumni", methods=['GET', 'POST'])
 def alumniLogin():
+    if request.method == 'POST':
+        # # Fetch form data
+        # global first_db
+        # global last_db
+        # global email_
+        # global password_db
+        alumni_filter = request.form
+        print(alumni_filter['passout_year'])
+        print(alumni_filter)
+        print("alumni filter")
+        # firstName = userDetails['firstName']
+        # first_db = firstName
+        # lastName = userDetails['lastName']
+        # last_db = lastName
+        # email = userDetails['email']
+        # email_ = email
+        # print(email_)
+        # global string
+        # string = email
+        # password = userDetails['password'] 
+        # password_db = password
+        # new_user = User(firstName , lastName , email , password , users_repository.next_index())
+        # users_repository.save_user(new_user)
+        # return redirect(url_for('verification_page'))
     if flag == 1:
         return render_template("alumni.html")
     else:

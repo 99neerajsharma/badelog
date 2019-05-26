@@ -106,13 +106,13 @@
 	</header>
 	<!-- /Header -->
 
-	robo coordi
+	
 <!-- About -->
 <div id="about" class="section md-padding">
 
 	<!-- Container -->
 	<div class="container">
-
+		<form action="" method="POST">
 		<!-- Row -->
 		<div class="row">
 
@@ -122,9 +122,9 @@
 			</div>
 			<h4 style="text-align:center;color:indigo">College Details</h4>
 			<div class="col-sm-3 col-xs-6">
-				<form>
+				<!-- <form> -->
 						<h3>Passout Year</h3>
-						<select>
+						<select name="passout_year">
 							<option value="All">All</option>
 							  <option value="2018">2018</option>
 							  <option value="2017">2017</option>
@@ -135,26 +135,26 @@
 							<option value="2012">2012</option>
 
 						</select>
-				</form>
+				<!-- </form> -->
 			</div>
 
 			<div class="col-sm-3 col-xs-6">
-				<form>
+				<!-- <form> -->
 					<h3>Degree</h3>
-					<select>
+					<select name="degree">
 						<option value="All">All</option>
 						<option value="B.Tech">B.Tech</option>
 						<option value="M.Tech">M.Tech</option>
 						<option value="Phd">Phd</option>
 
 					</select>
-				</form>
+				<!-- </form> -->
 			</div>
 
 			<div class="col-sm-3 col-xs-6">
-				<form>
+				<!-- <form> -->
 					<h3>Branch</h3>
-					<select>
+					<select name="branch">
 							<option value="All">All</option>
 							<option value="CSE">CSE</option>
 							<option value="EE">EE</option>
@@ -162,13 +162,13 @@
 							<option value="CE">CE</option>
 				
 					</select>
-				</form>
+				<!-- </form> -->
 			</div>
 
 						<div class="col-sm-3 col-xs-6">
-								<form>
+								<!-- <form> -->
 										<h3>Current state</h3>
-										<select>
+										<select name="current_state">
 										  <option value="All">All</option>
 										  <option value="Higher Studies">Higher Studies</option>
 										  <option value="Job">Job</option>
@@ -176,7 +176,7 @@
 										  <option value="Unemployed">Unemployed</option>
 						
 										</select>
-									</form>
+									<!-- </form> -->
 							</div>
 						
 		</div>
@@ -185,10 +185,10 @@
 				<br><br>
 				<h4 style="text-align:center;color:indigo">Job Details</h4>
 				<div class="col-sm-3 col-xs-6">
-					<form>
+					<!-- <form> -->
 							<h3>Company name</h3>
-							<select>
-								<option value="All_name">All</option>
+							<select name="company_name">
+								<option value="All">All</option>
 								<option value="Seimens_name">Seimens</option>
 								<option value="Google_name">Google</option>
 								<option value="Bloomberg_name">Bloomberg</option>
@@ -197,13 +197,13 @@
 								<option value="ISRO_name">ISRO</option>
 
 							</select>
-					</form>
+					<!-- </form> -->
 				</div>
 
 				<div class="col-sm-3 col-xs-6">
-					<form>
+					<!-- <form> -->
 						<h3>Location</h3>
-						<select>
+						<select name="location">
 							<option value="All">All</option>
 							<option value="Hydrabad">Hydrabad</option>
 							<option value="Delhi">Delhi</option>
@@ -216,13 +216,13 @@
 							<option value="HongKong">Hong Kong</option>
 
 						</select>
-					</form>
+					<!-- </form> -->
 				</div>
 
 				<div class="col-sm-3 col-xs-6">
-						<form>
+						<!-- <form> -->
 							<h3>Position</h3>
-								<select>
+								<select name="position">
 									<option value="All">All</option>
 									<option value="JWD">Junior web developer</option>
 									<option value="SWD">Senior web developer</option>
@@ -234,13 +234,13 @@
 									<option value="IRS">Information research scientist</option>
 									<option value="databaseAdministrator">Database Administrator</option>
 								</select>
-						</form>
+						<!-- </form> -->
 									</div>
 
 					<div class="col-sm-3 col-xs-6">
-						<form>
+						<!-- <form> -->
 							<h3>Field of work</h3>
-								<select>
+								<select name="field_of_work">
 									<option value="All">All</option>
 									<option value="webdevelopment">Web development</option>
 									<option value="deeplearning">Deep learning</option>
@@ -249,9 +249,9 @@
 									<option value="informationconcept">Information concept</option>
 
 								</select>
-						</form>
+						<!-- </form> -->
 					</div>
-
+					
 					
 							
 			</div>
@@ -260,9 +260,9 @@
 					<br><br>
 					<h4 style="text-align:center;color:indigo">Opportunities of Hiring</h4>
 					<div class="col-sm-3 col-xs-6">
-							<form>
+							<!-- <form> -->
 									<h3>Company</h3>
-									<select>
+									<select name="company">
 										<option value="All">All</option>
 										<option value="Seimens">Seimens</option>
 										<option value="Google">Google</option>
@@ -270,13 +270,13 @@
 										<option value="Ubisoft">Ubisoft</option>
 		
 									</select>
-							</form>
+							<!-- </form> -->
 					</div>
 	
 					<div class="col-sm-4 col-xs-6">
-						<form>
+						<!-- <form> -->
 							<h3>Position</h3>
-							<select>
+							<select name="position_in_opportunities">
 									<option value="All">All</option>
 									<option value="JWD">UI/UX Developer</option>
 									<option value="SWD">Assistant DL Researcher</option>
@@ -289,13 +289,12 @@
 									<option value="databaseAdministrator">Front end developer</option>
 	
 							</select>
-						</form>
 					</div>
 	
 					<div class="col-sm-4 col-xs-6">
-						<!-- <form>
+						<!-- <form> -->
 							<h3>Field</h3>
-							<select>
+							<select name="branch_field">
 									<option value="All">All</option>
 									<option value="CSE">CSE</option>
 									<option value="EE">EE</option>
@@ -303,13 +302,12 @@
 									<option value="CE">CE</option>
 						
 							</select>
-						</form> -->
+						<!-- </form> --> 
 					</div>
 	
 								<div class="col-sm-3 col-xs-6">
-										<form>
 												<h3>Field</h3>
-												<select>
+												<select name="field">
 														<option value="All">All</option>
 														<option value="WebD">WebD</option>
 														<option value="deeplearning">Deep Learning</option>
@@ -319,11 +317,11 @@
 														<option value="gamedevelopment">Game Development</option>
 
 												</select>
-											</form>
 									</div>
+									<input type="submit" value="submit">
 								
 				</div>
-			
+		<!-- </form> -->	
 	</div>
 
 	
