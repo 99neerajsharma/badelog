@@ -13,10 +13,10 @@ app = Flask(__name__)
 # app.config['MYSQL_DB'] = 'ALUMNI'
 
 # Uncomment this database is on server
-# app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
-# app.config['MYSQL_USER'] = 'sql12292091'
-# app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
-# app.config['MYSQL_DB'] = 'sql12292091'
+app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql12292091'
+app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
+app.config['MYSQL_DB'] = 'sql12292091'
 
 # object of MySql
 mysql = MySQL(app)
@@ -138,6 +138,63 @@ def signup():
         return redirect(url_for('verification_page'))
 
     return render_template("signup.html")
+
+@app.route("/forgot",methods=['GET', 'POST'])
+def forgot():
+    if request.method == 'POST':
+        # Fetch form data
+        global email
+        email = request.form['email']
+        global string
+        string = email
+        registeredUser = users_repository.get_email(email)
+        print(registeredUser)
+        if registeredUser is None:
+            return render_template("not_registered_user.html")
+        else:
+            return redirect(url_for('forgotemail'))
+        # new_user = User(firstName , lastName , email , password , users_repository.next_index())
+        # users_repository.save_user(new_user)
+    return render_template("forgot_email.html")
+
+@app.route("/forgotemail")
+def forgotemail():  
+    global random_URL
+    random_URL = URLSafeSerializer('secret_key')
+    global token
+    token = random_URL.dumps(string, salt='email-confirm')
+    #Put email ID of sender in <sender>
+    msg = Message('Email confirmation', sender = 'neera99j@gmail.com', recipients = [string])
+    msg.body = "Reset your password by clicking the link: "
+    domain = "http://localhost:5000/reset/"
+    msg.body += domain
+    msg.body += token
+    mail.send(msg)
+    return "Please see your email for password reset"
+    
+new_password=""
+@app.route('/reset/<token_recv>',methods=['GET', 'POST'])
+def password_change(token_recv):
+    try:
+        email = random_URL.loads(token_recv, salt='email-confirm')
+        cur = mysql.connection.cursor()
+        print("email is ",email)
+        if request.method == 'POST':
+            global new_password
+            new_password = request.form['password1']
+            # cur.execute("Delete from Login")
+            cur.execute("Update Login SET password=(%s) Where Email=(%s)",(new_password, email))
+            mysql.connection.commit()
+            cur.close()
+        registeredUser = users_repository.get_email(email)
+    except SignatureExpired :
+        return '<h2>The token is expired!</h2>'
+    print(new_password)
+    registeredUser = users_repository.get_email(email)
+    registeredUser.password = new_password
+    #set registered user to be active means user's account is verified.
+    registeredUser.active = True
+    return render_template("new_password.html")
 
 token=""
 random_URL = URLSafeSerializer('secret_key')

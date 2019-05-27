@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="content">
+
+	<div class="signup">
+
+		<div id="signup1">
+			<div class="form">
+				<h1>Enter details of your account</h1>
+
+				<form id="sign_up" action="" method="POST">
+					<div class="field-wrap">
+						<label>
+							Email Address<span class="req"> *</span>
+						</label>
+						<input id="email" type="email" name="email" required autocomplete="off" />
+					</div>
+
+					<button id="next1" type="submit" class="button button-block">Next</button>
+				</form> 
+			</div>
+		</div>
+
+		<div id="signup2">
+
+		</div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#next1").click(function(e){
+    var email_id = $("#email").val();
+    var domain = ".iitmandi.ac.in";
+    var flag = 1;
+    if(email_id.indexOf(domain) == -1){
+      alert("Not IIT Mandi webmail");
+      flag = 0;
+    if(!flag){
+      window.location.reload();
+      e.preventDefault();
+    }
+		console.log(flag);
+  });
+});
+</script>
+{% endblock %}
