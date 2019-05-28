@@ -13,10 +13,10 @@ app = Flask(__name__)
 # app.config['MYSQL_DB'] = 'ALUMNI'
 
 # Uncomment this database is on server
-app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql12292091'
-app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
-app.config['MYSQL_DB'] = 'sql12292091'
+# app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+# app.config['MYSQL_USER'] = 'sql12292091'
+# app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
+# app.config['MYSQL_DB'] = 'sql12292091'
 
 # object of MySql
 mysql = MySQL(app)
@@ -246,7 +246,7 @@ def alumniLogin():
         # global last_db
         # global email_
         # global password_db
-        alumni_filter = request.form
+        alumni_filter = request.form['form2']
         print(alumni_filter)
         print("alumni filter")
         print(alumni_filter['degree'])
