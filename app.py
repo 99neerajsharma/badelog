@@ -3,21 +3,20 @@ from flask_login import LoginManager , login_required , UserMixin , login_user
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeSerializer, SignatureExpired
 from flask_mysqldb import MySQL
-from wtforms import Form, SelectField
 
 app = Flask(__name__)
 
 # Uncomment this if database is on your system
-# app.config['MYSQL_HOST'] = '127.0.0.1'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = ''
-# app.config['MYSQL_DB'] = 'ALUMNI'
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'ALUMNI'
 
 # Uncomment this database is on server
-app.config['MYSQL_HOST'] = 'remotemysql.com'
-app.config['MYSQL_USER'] = 'qmrpgUAerV'
-app.config['MYSQL_PASSWORD'] = 'GS5zKM8g2w'
-app.config['MYSQL_DB'] = 'qmrpgUAerV'
+# app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
+# app.config['MYSQL_USER'] = 'sql12292091'
+# app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
+# app.config['MYSQL_DB'] = 'sql12292091'
 
 # object of MySql
 mysql = MySQL(app)
@@ -79,11 +78,6 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail=Mail(app)
 
-# class CollegeDetails(Form):
-#     Year = SelectField("Passout Year", choices=['All', 2018, 2017, 2016, 2015, 2014, 2013, 2012] )
-#     Degree = SelectField("Degree", choices=[(0, 'All'), (1, 'B.Tech'), (2, 'M.Tech'), (3, 'Phd')])
-#     Branch = SelectField("Branch", choices=['All', 'CSE', 'EE', 'ME', 'CE'])
-#     CurrentState = SelectField("Current State", choices=['All', 'Studies', 'Job', 'Business', 'Unemployed'])
 
 
 flag = 1
@@ -191,7 +185,7 @@ def password_change(token_recv):
             # cur.execute("Delete from Login")
             cur.execute("Update Login SET password=(%s) Where Email=(%s)",(new_password, email))
             mysql.connection.commit()
-        cur.close()
+            cur.close()
         registeredUser = users_repository.get_email(email)
     except SignatureExpired :
         return '<h2>The token is expired!</h2>'
@@ -237,7 +231,8 @@ def confirm_email(token_recv):
     return '<h2>Your Email is verified!</h2>'
 
 alumni_no = 'b15100'
-list = ""
+
+list1 = ""
 @app.route('/profile/<enroll_no>')
 def profile_page(enroll_no):
     global alumni_no
@@ -248,18 +243,16 @@ def profile_page(enroll_no):
 def alumniLogin():
     if request.method == 'POST':
         # # Fetch form data
-        passout_year = request.form['passout_year']
-        degree = request.form['degree']
-        branch = request.form['branch']
-        current_state = request.form['current_state']
-        company_name = request.form['company_name']
-        location = request.form['location']
-        position = request.form['position']
-        field_of_work = request.form['field_of_work']
-        company = request.form['company']
-        position_in_opportunities = request.form['position_in_opportunities']
-        field = request.form['field']
+        # global first_db
+        # global last_db
+        # global email_
+        # global password_db
+        alumni_filter = request.form
+        print(alumni_filter)
+        print("alumni filter")
+        print(alumni_filter['degree'])
         cur = mysql.connection.cursor()
+<<<<<<< HEAD
         query1 = ("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='{}' AND A.Branch='{}' ").format(passout_year, degree,current_state, branch)
         query2 = ("SELECT EnrollmentNumber from Worked_In W Where W.CompanyName='{}' AND W.Location='{}' AND W.Position='{}' AND W.Field_of_work='{}' ").format(company_name, location, position, field_of_work)
         query3 = ("SELECT EnrollmentNumber from Opportunities_for_hiring O Where O.Company='{}' AND O.Position='{}' AND O.Field='{}'").format(company, position_in_opportunities, field)
@@ -284,23 +277,60 @@ def alumniLogin():
         final_result = (set(result1).intersection(result2))
         final_result = (set(final_result).intersection(result3))
         print(final_result)
+=======
+        list1 = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='Job' AND A.Branch='CSE' ").format(alumni_filter['passout_year'], alumni_filter['degree']))
+        print(list1)
+>>>>>>> master
         # list = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree={} AND A.CurrentState=Job AND A.Branch=CSE ").format(alumni_filter['passout_year'], alumni_filter['degree'],alumni_filter['current_state'],alumni_filter['branch']))
 
         mysql.connection.commit()
         cur.close()
+        # firstName = userDetails['firstName']
+        # first_db = firstName
+        # lastName = userDetails['lastName']
+        # last_db = lastName
+        # email = userDetails['email']
+        # email_ = email
         print("alumni filter")
+        # print(email_)
+        # global string
+        # string = email
+        # password = userDetails['password'] 
+        # password_db = password
+        # new_user = User(firstName , lastName , email , password , users_repository.next_index())
+        # users_repository.save_user(new_user)
+        # return redirect(url_for('verification_page'))
     if flag == 1:
         return render_template("alumni.html", filter=final_result)
     else:
         return "Please Login first"
     
-
-@app.route("/login_page/students")
+students = ""
+@app.route("/login_page/students",methods=['GET','POST'])
 def adminLogin():
+    if request.method == 'POST':
+        print("hello")
+        Btech = request.form
+        Btech_year = request.form['Btech_year']    
+        branch = Btech['branch']
+        room_no = Btech['room_no']
+        hostels = Btech['hostels']
+        global students
+
+        print(branch,room_no,hostels)
+        cur = mysql.connection.cursor()
+        query = "select * from student S where S.Branch='{}' AND S.Hostels='{}' AND S.Room_no='{}' ".format(branch,hostels,room_no)
+        query1 = query.replace("='All'","!=''")
+        cur.execute(query1)
+       
+        students = cur.fetchall()
+        print(students)
+        students = list(students)
+        
     if flag == 1:
-        return render_template("students.html")
+        return render_template("students.html",students=students)
     else:
-        return "Please Login first"
+        return "Please Login first" 
 
 @app.route("/login_page/faculty")
 def studentLogin():
@@ -314,28 +344,18 @@ def context_processor():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Alumni Where EnrollmentNumber=%s",[alumni_no])
     alumni_basic_information = cur.fetchall()
-    cur.close()
-    cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Contact_Details Where EnrollmentNumber=%s",[alumni_no])
     contact_deatils = cur.fetchall()
-    cur.close()
-    cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Worked_In Where EnrollmentNumber=%s",[alumni_no])
     Worked_In = cur.fetchall()
-    cur.close()
-    cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Higher_Studies Where EnrollmentNumber=%s",[alumni_no])
     Higher_Studies = cur.fetchall()
-    cur.close()
-    cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Semester_Exchange Where EnrollmentNumber=%s",[alumni_no])
     sem_exchange = cur.fetchall()
-    cur.close()
-    cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM Contributed_To Where EnrollmentNumber=%s",[alumni_no])
     contribution = cur.fetchall()
     cur.close()
-    return dict(username=string, alumni=alumni_basic_information, contact=contact_deatils, work=Worked_In, study=Higher_Studies, sem_exchange=sem_exchange, contribution=contribution)
+    return dict(students = students,username=string, alumni=alumni_basic_information, contact=contact_deatils, work=Worked_In, study=Higher_Studies, sem_exchange=sem_exchange, contribution=contribution)
     
 if __name__ == "__main__":
     app.run(debug=True)

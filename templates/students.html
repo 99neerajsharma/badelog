@@ -37,7 +37,7 @@
 	<![endif]-->
 </head>
 
-<body>
+<body >
 	<!-- Header -->
 	<header id="home">
 		<!-- Background Image -->
@@ -74,7 +74,7 @@
 					</li>
 					<li><a href="#footer">Contact</a></li>
 				</ul>
-				<!-- /Main navigation -->
+				<!-- /Main navigation -->	
 
 			</div>
 		</nav>
@@ -89,8 +89,8 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="home-content">
 							<h1 class="white-text">Welcome to Students directory</h1>
-							<p class="white-text">A place where great minds come together to create something epic. Bade-Log is a state of the art alumni-student-faculty directory and meeting platform.
-							</p>
+							<h5 class="white-text">The place to find and connect with the brightest minds keen to learn new things.
+							</h5>
 							<!-- <button class="white-btn">Get Started!</button>
 							<button class="main-btn">Learn more</button> -->
 						</div>
@@ -110,15 +110,84 @@
 
 	<!-- Container -->
 	<div class="container">
+		
+			<form action="/login_page/students" method="POST">
+				<!-- Row -->
+				<div class="row">
+		
+					<!-- Section header -->
+					<div class="section-header text-center">
+						<h2 class="title">Find Student</h2>
+					</div>
+					<h4 style="text-align:center;color:indigo">Choose options</h4>
+					<div class="col-sm-3 col-xs-6">
+						<!-- <form> -->
+								<h3>Year</h3>
+								<select name="Btech_year">
+									<option value="First">First year</option>
+									<option value="Second">Second year</option>
+									<option value="Third">Third year</option>
+									<option value="Fourth">Fourth year</option>
+		
+								</select>
+						<!-- </form> -->
+					</div>
+		
+					<div class="col-sm-3 col-xs-6">
+						<!-- <form> -->
+							<h3>Branch</h3>
+							<select name="branch">
+									<option value="All">All</option>
+									<option value="Computer Science and Engineering">CSE</option>
+									<option value="Electrical Engineering">EE</option>
+									<option value="Mechanical Engineering">ME</option>
+									<option value="Civil Engineering">CE</option>
+						
+							</select>
+						<!-- </form> -->
+					</div>
 
-		<!-- Row -->
-		<div class="row">
-
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title">Find your student</h2>
-			</div>
-			
+					<div class="col-sm-3 col-xs-6">
+						
+							<h3>Room No.</h3>
+							<select name="room_no">
+									<option value="All">All</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="101">101</option>
+									<option value="102">102</option>
+									<option value="103">103</option>
+									<option value="104">104</option>
+									<option value="105">105</option>
+									<option value="201">201</option>
+									<option value="202">202</option>
+									<option value="203">203</option>
+									<option value="204">204</option>
+						
+							</select>
+						
+					</div>
+		
+								<div class="col-sm-3 col-xs-6">
+										<!-- <form> -->
+												<h3>Hostels</h3>
+												<select name="hostels">
+												  <option value="All">All</option>
+												  <option value="Parashar Hostel B1">Parashar Hostel B1</option>
+												  <option value="Chandrataal Hostel B5">Chandrataal Hostel B5</option>
+												  <option value="Parashar Hostel B2">Parashar Hostel B2</option>
+						
+								
+												</select>
+											<!-- </form> -->
+									</div>
+								
+				</div>
+				<input type="submit" style="color:black;background-color: white;font-size: 20px;margin-left:45%;margin-top:5%" value="submit">
+				</form>
+				
 		</div>
 	</div>
 
