@@ -7,16 +7,16 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Uncomment this if database is on your system
-# app.config['MYSQL_HOST'] = '127.0.0.1'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = ''
-# app.config['MYSQL_DB'] = 'ALUMNI'
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'ALUMNI'
 
 # Uncomment this database is on server
-app.config['MYSQL_HOST'] = 'remotemysql.com'
-app.config['MYSQL_USER'] = 'qmrpgUAerV'
-app.config['MYSQL_PASSWORD'] = 'GS5zKM8g2w'
-app.config['MYSQL_DB'] = 'qmrpgUAerV'
+# app.config['MYSQL_HOST'] = 'remotemysql.com'
+# app.config['MYSQL_USER'] = 'qmrpgUAerV'
+# app.config['MYSQL_PASSWORD'] = 'GS5zKM8g2w'
+# app.config['MYSQL_DB'] = 'qmrpgUAerV'
 
 # object of MySql
 mysql = MySQL(app)
@@ -318,14 +318,14 @@ def alumniLogin():
 students = ""
 @app.route("/login_page/students",methods=['GET','POST'])
 def adminLogin():
+    global students
+    beauty_students=[]
     if request.method == 'POST':
-        print("hello")
         Btech = request.form
         Btech_year = request.form['Btech_year']    
         branch = Btech['branch']
         room_no = Btech['room_no']
         hostels = Btech['hostels']
-        global students
 
         print(branch,room_no,hostels)
         cur = mysql.connection.cursor()
@@ -336,6 +336,9 @@ def adminLogin():
         students = cur.fetchall()
         print(students)
         students = list(students)
+
+        for temp in students:
+            beauty_students.append(temp)
         
     if flag == 1:
         return render_template("students.html",students=students)
