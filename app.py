@@ -7,16 +7,16 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Uncomment this if database is on your system
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'ALUMNI'
+# app.config['MYSQL_HOST'] = '127.0.0.1'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'ALUMNI'
 
 # Uncomment this database is on server
-# app.config['MYSQL_HOST'] = 'sql12.freemysqlhosting.net'
-# app.config['MYSQL_USER'] = 'sql12292091'
-# app.config['MYSQL_PASSWORD'] = 'Neeraj@mysql'
-# app.config['MYSQL_DB'] = 'sql12292091'
+app.config['MYSQL_HOST'] = 'remotemysql.com'
+app.config['MYSQL_USER'] = 'qmrpgUAerV'
+app.config['MYSQL_PASSWORD'] = 'GS5zKM8g2w'
+app.config['MYSQL_DB'] = 'qmrpgUAerV'
 
 # object of MySql
 mysql = MySQL(app)
@@ -239,6 +239,7 @@ def profile_page(enroll_no):
     alumni_no = enroll_no
     return render_template('profile.html')
 
+final_result=""
 @app.route("/login_page/alumni", methods=['GET', 'POST'])
 def alumniLogin():
     if request.method == 'POST':
@@ -247,20 +248,30 @@ def alumniLogin():
         # global last_db
         # global email_
         # global password_db
+        passout_year = request.form['passout_year']
+        degree = request.form['degree']
+        branch = request.form['branch']
+        current_state = request.form['current_state']
+        company_name = request.form['company_name']
+        location = request.form['location']
+        position = request.form['position']
+        field_of_work = request.form['field_of_work']
+        company = request.form['company']
+        position_in_opportunities = request.form['position_in_opportunities']
+        field = request.form['field']
         alumni_filter = request.form
         print(alumni_filter)
         print("alumni filter")
         print(alumni_filter['degree'])
         cur = mysql.connection.cursor()
-<<<<<<< HEAD
         query1 = ("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='{}' AND A.Branch='{}' ").format(passout_year, degree,current_state, branch)
         query2 = ("SELECT EnrollmentNumber from Worked_In W Where W.CompanyName='{}' AND W.Location='{}' AND W.Position='{}' AND W.Field_of_work='{}' ").format(company_name, location, position, field_of_work)
         query3 = ("SELECT EnrollmentNumber from Opportunities_for_hiring O Where O.Company='{}' AND O.Position='{}' AND O.Field='{}'").format(company, position_in_opportunities, field)
         query1 = query1.replace("=All","!=''")
         query1 = query1.replace("='All'","!=''")
-        # query2 = query2.replace("=All","!=''")
+        query2 = query2.replace("=All","!=''")
         query2 = query2.replace("='All'","!=''")
-        # query3 = query3.replace("=All","!=''")
+        query3 = query3.replace("=All","!=''")
         query3 = query3.replace("='All'","!=''")
         print(query1)
         print(query2)
@@ -274,13 +285,12 @@ def alumniLogin():
         print(result1)
         print(result2)
         print(result3)
+        global final_result
         final_result = (set(result1).intersection(result2))
         final_result = (set(final_result).intersection(result3))
         print(final_result)
-=======
-        list1 = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='Job' AND A.Branch='CSE' ").format(alumni_filter['passout_year'], alumni_filter['degree']))
-        print(list1)
->>>>>>> master
+        # list1 = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree='{}' AND A.CurrentState='Job' AND A.Branch='CSE' ").format(alumni_filter['passout_year'], alumni_filter['degree']))
+        # print(list1)
         # list = cur.execute(("SELECT EnrollmentNumber from Alumni A Where A.PassoutYear={} AND A.Degree={} AND A.CurrentState=Job AND A.Branch=CSE ").format(alumni_filter['passout_year'], alumni_filter['degree'],alumni_filter['current_state'],alumni_filter['branch']))
 
         mysql.connection.commit()
