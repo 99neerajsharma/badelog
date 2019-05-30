@@ -167,7 +167,7 @@
 										<h3>Current state</h3>
 										<select name="current_state">
 										  <option value="All">All</option>
-										  <option value="Higher Studies">Higher Studies</option>
+										  <option value="Studies">Higher Studies</option>
 										  <option value="Job">Job</option>
 										  <option value="Business">Business</option>
 										  <option value="Unemployed">Unemployed</option>
@@ -188,12 +188,12 @@
 							<h3>Company name</h3>
 							<select name="company_name">
 								<option value="All">All</option>
-								<option value="Seimens_name">Seimens</option>
-								<option value="Google_name">Google</option>
-								<option value="Bloomberg_name">Bloomberg</option>
-								<option value="Facebook_name">Facebook</option>
-								<option value="Nvidia_name">Nvidia</option>
-								<option value="ISRO_name">ISRO</option>
+								<option value="Seimens">Seimens</option>
+								<option value="Google">Google</option>
+								<option value="Bloomberg">Bloomberg</option>
+								<option value="Facebook">Facebook</option>
+								<option value="Nvidia">Nvidia</option>
+								<option value="ISRO">ISRO</option>
 
 							</select>
 					<!-- </form> -->
@@ -208,11 +208,11 @@
 							<option value="Delhi">Delhi</option>
 							<option value="London">London</option>
 							<option value="Noida">Noida</option>
-							<option value="NewYork">New York</option>
+							<option value="New York">New York</option>
 							<option value="Banglore">Banglore</option>
 							<option value="California">California</option>
 							<option value="Berlin">Berlin</option>
-							<option value="HongKong">Hong Kong</option>
+							<option value="Hong Kong">Hong Kong</option>
 						</select>
 					<!-- </form> -->
 				</div>
@@ -222,15 +222,15 @@
 							<h3>Position</h3>
 								<select name="position">
 									<option value="All">All</option>
-									<option value="JWD">Junior web developer</option>
-									<option value="SWD">Senior web developer</option>
+									<option value="Junior web developer">Junior web developer</option>
+									<option value="Senior web developer">Senior web developer</option>
 									<option value="Chairman">Chairman</option>
-									<option value="framedesigner">Frame designer</option>
-									<option value="SoftwareDeveloper">Software developer</option>
-									<option value="manager">Manager</option>
-									<option value="ISA">Information Security Analyst</option>
-									<option value="IRS">Information research scientist</option>
-									<option value="databaseAdministrator">Database Administrator</option>
+									<option value="Frame designer">Frame designer</option>
+									<option value="Software developer">Software developer</option>
+									<option value="Manager">Manager</option>
+									<option value="Information Security Analyst">Information Security Analyst</option>
+									<option value="Information research scientist">Information research scientist</option>
+									<option value="Database Administrator">Database Administrator</option>
 								</select>
 						<!-- </form> -->
 									</div>
@@ -240,11 +240,11 @@
 							<h3>Field of work</h3>
 								<select name="field_of_work">
 									<option value="All">All</option>
-									<option value="webdevelopment">Web development</option>
+									<option value="Web development">Web development</option>
 									<option value="deeplearning">Deep learning</option>
 									<option value="management">management</option>
-									<option value="database">Database </option>
-									<option value="informationconcept">Information concept</option>
+									<option value="development">Development </option>
+									<option value="Information concept">Information concept</option>
 
 								</select>
 						<!-- </form> -->
@@ -277,15 +277,15 @@
 							<h3>Position</h3>
 							<select name="position_in_opportunities">
 									<option value="All">All</option>
-									<option value="JWD">UI/UX Developer</option>
-									<option value="SWD">Assistant DL Researcher</option>
-									<option value="Chairman">Lead Web Developer</option>
-									<option value="framedesigner">Assistant Android Developer</option>
-									<option value="SoftwareDeveloper">Lead IOS Developer</option>
-									<option value="manager">Junior engine engineer</option>
-									<option value="ISA">Department Lead</option>
-									<option value="IRS">Information research scientist</option>
-									<option value="databaseAdministrator">Front end developer</option>
+									<option value="UI/UX Developer">UI/UX Developer</option>
+									<option value="Assistant DL Researcher">Assistant DL Researcher</option>
+									<option value="Lead Web Developer">Lead Web Developer</option>
+									<option value="Assistant Android Developer">Assistant Android Developer</option>
+									<option value="Lead IOS Developer">Lead IOS Developer</option>
+									<option value="Junior engine engieer">Junior engine engineer</option>
+									<option value="Department Lead">Department Lead</option>
+									<option value="Information research scientist">Information research scientist</option>
+									<option value="Front end developer">Front end developer</option>
 	
 							</select>
 					</div>
@@ -323,8 +323,11 @@
 
 	
 </div>
+<h3 style="text-align: center">Query Results:</h3>
+{% for person in filter %}
+	<a href="/profile/{{ person[0] }}"> <p style="text-align: center;font-size: 20px">{{ person[0] }}</p></a>
 		
-
+{% endfor %}
 	<!-- Numbers -->
 	<div id="numbers" class="section sm-padding">
 
