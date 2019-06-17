@@ -2,13 +2,17 @@
 <html lang="en">
 
 <head>
+	<script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
+	<script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
+	<script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
+	
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>BadeLog</title>
-
+	
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
@@ -23,7 +27,7 @@
 	<link type="text/css" rel="stylesheet" href="./../static/css/successfull_loginPage_css/magnific-popup.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="./../static/css/successfull_loginPage_css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="./../static/css/successfull_loginPage_css/style.css" />
@@ -34,6 +38,242 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
+	
+	<style class="cp-pen-styles">
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.under {
+}
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 50vh;
+}
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+.btn {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+#frame {
+  align-items: right;
+  width: 50vh;
+/*  min-width: 0%;
+  max-width: 100%;*/
+  height: 90vh;
+  min-height: 300px;
+  max-height: 720px;
+  background: #E6EAE7;
+  position: relative;
+
+}
+
+#frame .content {
+  float: left;
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (max-width: 735px) {
+  #frame .content {
+    width: calc(100%-34px);
+    min-width: 300px !important;
+  }
+}
+@media screen and (min-width: 900px) {
+  #frame .content {
+    width: calc(100%);
+  }
+}
+#frame .content .contact-profile {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #f5f5f5;
+}
+#frame .content .contact-profile img {
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin: 9px 12px 0 9px;
+}
+#frame .content .contact-profile p {
+  float: left;
+}
+#frame .content .contact-profile .social-media {
+  float: right;
+}
+#frame .content .contact-profile .social-media i {
+  margin-left: 14px;
+  cursor: pointer;
+}
+#frame .content .contact-profile .social-media i:nth-last-child(1) {
+  margin-right: 20px;
+}
+#frame .content .contact-profile .social-media i:hover {
+  color: #435f7a;
+}
+#frame .content .messages {
+  height: auto;
+  width: fit-content;
+  right: 10%;
+  min-height: calc(100% - 93px);
+  max-height: calc(100% - 93px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .messages {
+    max-height: calc(100% - 105px);
+  }
+}
+#frame .content .messages::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+#frame .content .messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#frame .content .messages ul li {
+  display: inline-block;
+  clear: both;
+  float: left;
+  margin: 15px 15px 5px 15px;
+  width: calc(100% - 25px);
+  font-size: 0.9em;
+}
+#frame .content .messages ul li:nth-last-child(1) {
+  margin-bottom: 20px;
+}
+#frame .content .messages ul li.sent img {
+  margin: 6px 8px 0 0;
+}
+#frame .content .messages ul li.sent p {
+  background: #435f7a;
+  color: #f5f5f5;
+}
+#frame .content .messages ul li.replies img {
+  float: right;
+  margin: 6px 0 0 8px;
+}
+#frame .content .messages ul li.replies p {
+  background: #f5f5f5;
+  float: right;
+}
+#frame .content .messages ul li img {
+  width: 22px;
+  border-radius: 50%;
+  float: left;
+}
+#frame .content .messages ul li p {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 205px;
+  line-height: 130%;
+}
+@media screen and (min-width: 735px) {
+  #frame .content .messages ul li p {
+    max-width: 300px;
+  }
+}
+#frame .content .message-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
+#frame .content .message-input .wrap {
+  position: relative;
+}
+#frame .content .message-input .wrap input {
+  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+  float: left;
+  border: none;
+  width: calc(100% - 90px);
+  padding: 11px 32px 10px 8px;
+  font-size: 0.8em;
+  color: #32465a;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap input {
+    padding: 15px 32px 16px 8px;
+  }
+}
+#frame .content .message-input .wrap input:focus {
+  outline: none;
+}
+#frame .content .message-input .wrap .attachment {
+  position: absolute;
+  right: 60px;
+  z-index: 4;
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #435f7a;
+  opacity: .5;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap .attachment {
+    margin-top: 17px;
+    right: 65px;
+  }
+}
+#frame .content .message-input .wrap .attachment:hover {
+  opacity: 1;
+}
+#frame .content .message-input .wrap button {
+  float: right;
+  border: none;
+  width: 50px;
+  padding: 12px 0;
+  cursor: pointer;
+  background: #32465a;
+  color: #f5f5f5;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap button {
+    padding: 16px 0;
+  }
+}
+#frame .content .message-input .wrap button:hover {
+  background: #435f7a;
+}
+#frame .content .message-input .wrap button:focus {
+  outline: none;
+}
+</style>
 </head>
 
 <body>
@@ -372,6 +612,62 @@
 
 	</div>
 	<!-- /Testimonial -->
+	
+	<button class="open-button" onclick="openForm()">Chat</button>
+	<div class="chat-popup" id="myForm">
+		<div id="container">
+			<div id="frame">
+				<div class="content">
+					<div class="contact-profile">
+						<p>Public Chatroom | <button class="btn" onclick="closeForm()">Close</button></p>	
+					</div>
+					<div class="messages">
+						<ul>
+							<li class="replies>
+								<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+								<p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+							</li>
+							<li class="sent">
+								<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+								<p>When you're backed against the wall, break the god damn thing down.</p>
+							</li>
+							<li class="sent">
+								<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+								<p>Excuses don't win championships.</p>
+							</li>
+							<li class="replies">
+								<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+								<p>Oh yeah, did Michael Jordan tell you that?</p>
+							</li>
+							<li class="sent">
+								<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+								<p>No, I told him that.</p>
+							</li>
+							<li class="sent">
+								<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+								<p>What are your choices when someone puts a gun to your head?</p>
+							</li>
+							<li class="replies">
+								<img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+								<p>What are you talking about? You do what they say or they shoot you.</p>
+							</li>
+							<li class="sent">
+								<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+								<p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="message-input">
+						<div class="wrap">
+						<input type="text" placeholder="Write your message..." />
+						<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+						<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	
 
@@ -442,6 +738,72 @@
 	<script type="text/javascript" src="./../static/js/successfully_loginPage_js/jquery.magnific-popup.js"></script>
 	<script type="text/javascript" src="./../static/js/successfully_loginPage_js/style.js"></script>
 
+
+	<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+	<script >$(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+	$("#profile-img").click(function() {
+		$("#status-options").toggleClass("active");
+	});
+
+	$(".expand-button").click(function() {
+	  $("#profile").toggleClass("expanded");
+		$("#contacts").toggleClass("expanded");
+	});
+
+	$("#status-options ul li").click(function() {
+		$("#profile-img").removeClass();
+		$("#status-online").removeClass("active");
+		$("#status-away").removeClass("active");
+		$("#status-busy").removeClass("active");
+		$("#status-offline").removeClass("active");
+		$(this).addClass("active");
+
+		if($("#status-online").hasClass("active")) {
+			$("#profile-img").addClass("online");
+		} else if ($("#status-away").hasClass("active")) {
+			$("#profile-img").addClass("away");
+		} else if ($("#status-busy").hasClass("active")) {
+			$("#profile-img").addClass("busy");
+		} else if ($("#status-offline").hasClass("active")) {
+			$("#profile-img").addClass("offline");
+		} else {
+			$("#profile-img").removeClass();
+		};
+
+		$("#status-options").removeClass("active");
+	});
+
+	function newMessage() {
+		message = $(".message-input input").val();
+		if($.trim(message) == '') {
+			return false;
+		}
+		$('<li class="replies"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+		$('.message-input input').val(null);
+		$('.contact.active .preview').html('<span>You: </span>' + message);
+		$(".messages").animate({ scrollTop: $(document).height() }, "fast");
+	};
+
+	$('.submit').click(function() {
+	  newMessage();
+	});
+
+	$(window).on('keydown', function(e) {
+	  if (e.which == 13) {
+		newMessage();
+		return false;
+	  }
+	});
+	</script>
+	<script>
+	function openForm() {
+	  document.getElementById("myForm").style.display = "block";
+	}
+	function closeForm() {
+	  document.getElementById("myForm").style.display = "none";
+	}
+	</script>
 </body>
 
 </html>
